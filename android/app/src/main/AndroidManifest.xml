@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="KagajPatra"
+        android:label="Digital Card"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
