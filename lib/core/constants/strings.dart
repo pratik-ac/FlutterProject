@@ -6,6 +6,7 @@ class Strings {
   static String contactId = 'Contact ID :';
   static String dob = 'DOB: ';
 
+  static String myNationality = 'Nepali';
   static String myName = 'Heisenberg';
   static String myAddress = 'Mexico City, Mexico';
   static String myEmail = 'Heisenberg@gmail.com';

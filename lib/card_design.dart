@@ -13,7 +13,7 @@ class CardDesign extends StatelessWidget {
     return Scaffold(
       // backgroundColor: Colors.blue,
       appBar: AppBar(
-        title: const Text("Digital Card"),
+        title: Text(Strings.appName),
         backgroundColor: const Color.fromARGB(255, 4, 238, 183),
       ),
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -21,45 +21,16 @@ class CardDesign extends StatelessWidget {
           backgroundImage: AssetImage(AppImages.hiesenbergPic),
           radius: 100,
         ),
-        const Text("Nepali"),
+        Text(Strings.myNationality),
         const SizedBox(height: 20),
         cardDesignRow(field: Strings.name, fieldValue: Strings.myName),
         const SizedBox(height: 20),
         cardEmailRow(field: Strings.email, fieldValue: Strings.myEmail),
         const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-                onTap: () {
-                  String url = "tel:${Strings.myContactId}";
-// '                   print("Printing........");
-                  callToNumber(url: url);
-                },
-                child: Text(
-                  Strings.contactId,
-                  style: const TextStyle(fontSize: 20, color: Colors.red),
-                )),
-            Text(
-              Strings.myContactId,
-              style: const TextStyle(fontSize: 18, color: Colors.blue),
-            )
-          ],
-        ),
+        cardContactRow(
+            field: Strings.contactId, fieldValue: Strings.myContactId),
         const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              Strings.dob,
-              style: const TextStyle(fontSize: 20, color: Colors.red),
-            ),
-            Text(
-              Strings.myDob,
-              style: const TextStyle(fontSize: 18, color: Colors.blue),
-            )
-          ],
-        ),
+        cardDobRow(field: Strings.dob, fieldValue: Strings.myDob),
         const SizedBox(height: 20),
       ]
           //    Image.asset("assets/k.png")),
@@ -110,6 +81,44 @@ class CardDesign extends StatelessWidget {
         Text(
           fieldValue,
           style: AppStyles.emailTitle,
+        )
+      ],
+    );
+  }
+
+  cardContactRow({required String field, required String fieldValue}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        GestureDetector(
+            onTap: () {
+              String url = "tel:${fieldValue}";
+// '                   print("Printing........");
+              callToNumber(url: url);
+            },
+            child: Text(
+              field,
+              style: AppStyles.contactHeading,
+            )),
+        Text(
+          fieldValue,
+          style: AppStyles.contactTitle,
+        )
+      ],
+    );
+  }
+
+  cardDobRow({required String field, required String fieldValue}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          field,
+          style: AppStyles.dobHeading,
+        ),
+        Text(
+          fieldValue,
+          style: AppStyles.dobTitle,
         )
       ],
     );
